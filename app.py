@@ -32,6 +32,9 @@ speed = 2
 text_gap = 100  # Minimum space between consecutive headlines
 x_positions = []
 
+# Initialize dictionary to track displayed headlines
+displayed_headlines = {}
+
 # Calculate initial x-positions with proper spacing
 current_x = screen_width
 for headline in scrolling_headlines:
@@ -55,6 +58,18 @@ while running:
         text_rect.y = (screen_height - text_rect.height) // 2
         screen.blit(text, text_rect)
 
+        # Update displayed count in dictionary
+        if headline not in displayed_headlines:
+            displayed_headlines[headline] = 1
+        else:
+            displayed_headlines[headline] += 1
+
+        # If a headline has been displayed 3 times, remove it
+        if displayed_headlines[headline] >= 3:
+            # Remove the headline and adjust scrolling list
+            displayed_headlines.pop(headline, None)
+            scrolling_headlines = [h for h in scrolling_headlines if displayed_headlines.get(h, 0) < 3]
+
         # Move headline left
         x_positions[i] -= speed
 
@@ -68,4 +83,5 @@ while running:
     clock.tick(60)
 
 pygame.quit()
+
 
