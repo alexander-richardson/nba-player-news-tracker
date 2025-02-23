@@ -2,6 +2,8 @@
 
 This project displays dynamically scrolling NBA player news headlines fetched from [NBC Sports Fantasy Basketball](https://www.nbcsports.com/fantasy/basketball/player-news). The application is designed to run on a Raspberry Pi, outputting to an HDMI-connected display, such as a 5-inch screen, for real-time updates.
 
+See it in action! https://youtu.be/YfccXdPllzo
+
 ## Features
 
 - **Dynamic Headline Fetching:**
